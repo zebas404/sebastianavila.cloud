@@ -30,6 +30,6 @@ Open `index.html` in a browser. That's it.
 index.html     single page
 styles.css     palette, light/dark theme, responsive layout
 script.js      theme toggle
-favicon.svg
-assets/        downloadable CV
+favicon-32.png, apple-touch-icon.png, favicon.svg   SA monogram
+assets/        downloadable CV and Open Graph preview image
 ```
