@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · Sebastian Avila</title>
+  <meta name="description" content="Privacy policy for the personal automations run by Sebastian Avila (n8n zxbCloud).">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0B1622">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__logo" href="/" aria-label="Home">SA<span>//</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap narrow">
+        <p class="eyebrow"><span>//</span> legal</p>
+        <h1>Privacy Policy</h1>
+        <p class="mono">Last updated: October 5, 2026</p>
+
+        <h2>Who this applies to</h2>
+        <p>This policy covers <strong>n8n zxbCloud</strong>, a private automation run by Sebastian Avila on his own home server. It is for personal use only and is not offered to the public. The only Google account it accesses is Sebastian's own.</p>
+
+        <h2>What data it accesses</h2>
+        <p>With Sebastian's authorization, the automation reads new messages in his Gmail mailbox and reads and creates events in his Google Calendar. It uses this access for one purpose: when an email confirms an appointment, meeting or event, it creates the matching calendar event.</p>
+
+        <h2>How data is processed</h2>
+        <p>The content of each new email is sent to the Anthropic API (Claude) only to decide whether it describes an event and to extract its date, time and place. Nothing else is done with it.</p>
+
+        <h2>Storage and sharing</h2>
+        <p>Emails are not copied, stored or sold. Data is never shared with third parties beyond the processing described above, and it is not used for advertising or to train models. Execution logs stay on the private home server.</p>
+
+        <h2>Google API Services User Data Policy</h2>
+        <p>The use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+        <h2>Revoking access</h2>
+        <p>Access can be revoked at any time from <a href="https://myaccount.google.com/permissions">Google Account → Third-party connections</a>.</p>
+
+        <h2>Contact</h2>
+        <p>Questions: <a href="mailto:contact@sebastianavila.cloud">contact@sebastianavila.cloud</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p class="mono"><a href="/">sebastianavila.cloud</a></p>
+    </div>
+  </footer>
+</body>
+</html>
