@@ -1,0 +1,49 @@
+# Publica la web en S3 y limpia la caché de CloudFront en cada push a main.
+# Credenciales: rol IAM asumido por OIDC (sin access keys guardadas en GitHub).
+name: Deploy to AWS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}   # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  id-token: write   # necesario para pedir el token OIDC
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  AWS_REGION: us-east-1
+  S3_BUCKET: sebastianavila-cloud-web
+  CLOUDFRONT_DISTRIBUTION_ID: E1ITQDXKQZ7LSX
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Sync site to S3
+        run: |
+          aws s3 sync . "s3://${S3_BUCKET}" --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "README.md" \
+            --exclude ".gitattributes" \
+            --exclude ".gitignore"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${CLOUDFRONT_DISTRIBUTION_ID}" \
+            --paths "/*"
